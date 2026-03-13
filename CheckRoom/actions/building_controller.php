@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
       if (mysqli_query($conn, $query)) {
     // បាញ់ត្រឡប់មកទំព័រ building.php វិញ
-    header("Location: ../../buildings.php?status=success");
+    header("Location: ../views/checkroom/buildings.php?status=success");
 } else {
-    header("Location: ../../buildings.php?status=error&msg=" . urlencode(mysqli_error($conn)));
+    header("Location: ../views/checkroom/buildings.php?status=error&msg=" . urlencode(mysqli_error($conn)));
 }
 exit();
     }

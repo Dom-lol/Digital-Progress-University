@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   WHERE id = $room_id";
 
         if (mysqli_query($conn, $query)) {
-            header("Location: ../views/rooms/index.php?status=success&msg=RoomUpdated");
+            header("Location: ../views/checkroom/buildings.php?status=success&msg=RoomUpdated");
         } else {
-            header("Location: ../views/rooms/index.php?status=error");
+            header("Location: ../views/checkroom/buildings.php?status=error");
         }
     }
     exit();

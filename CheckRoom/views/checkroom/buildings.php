@@ -225,6 +225,35 @@
     </div>
 </div>
 
+<div id="modalEditBuilding" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+    <div class="bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl p-8 transform transition-all">
+        <h3 class="text-xl font-black text-slate-800 uppercase italic mb-6">កែសម្រួលអគារ</h3>
+        
+        <form action="../../actions/building_controller.php" method="POST">
+            <input type="hidden" name="action" value="edit">
+            <input type="hidden" name="building_id" id="edit_b_id">
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="text-[10px] font-black text-slate-400 uppercase ml-2">ឈ្មោះអគារ</label>
+                    <input type="text" name="building_name" id="edit_b_name" required 
+                        class="w-full px-5 py-3 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none font-bold">
+                </div>
+                <div>
+                    <label class="text-[10px] font-black text-slate-400 uppercase ml-2">ចំនួនជាន់សរុប</label>
+                    <input type="number" name="total_floors" id="edit_b_floors" required
+                        class="w-full px-5 py-3 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none font-bold">
+                </div>
+            </div>
+
+            <div class="flex gap-3 mt-8">
+                <button type="button" onclick="toggleModal('modalEditBuilding')" class="flex-1 py-4 bg-slate-100 text-slate-500 rounded-2xl font-black uppercase tracking-widest hover:bg-slate-200 transition-all">បោះបង់</button>
+                <button type="submit" class="flex-1 py-4 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all">រក្សាទុក</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div id="modalRoom" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
     <div class="bg-white w-full max-w-md rounded-[2.5rem] shadow-2xl p-8 transform transition-all">
         <div class="flex justify-between items-center mb-6">
@@ -424,13 +453,13 @@
     function confirmDelete(type, id) {
         Swal.fire({
             title: 'តើអ្នកប្រាកដទេ?',
-            text: "ទិន្នន័យនេះនឹងត្រូវលុបចេញពី Database!",
+            text: "ទិន្នន័យនេះនឹងត្រូវលុបចេញ",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#e11d48',
             cancelButtonColor: '#64748b',
-            confirmButtonText: 'បាទ/ចាស, លុបវា!',
-            cancelButtonText: 'បោះបង់'
+            confirmButtonText: 'Okay',
+            cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = `../../actions/delete_controller.php?type=${type}&id=${id}`;
@@ -446,4 +475,40 @@
         document.getElementById('smartSearch').value = "";
         smartFilter();
     }
+
+    // ១១. បង្ហាញ Success/Error Alert បន្ទាប់ពី Redirect មកវិញ
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // ឆែកមើលការបន្ថែម ឬលុប (តាមរយៈ status ឬ deleted ឬ success)
+        const status = urlParams.get('status') || urlParams.get('success') || (urlParams.has('deleted') ? 'deleted' : null);
+
+        if (status) {
+            let config = {
+                timer: 2500,
+                showConfirmButton: false,
+                borderRadius: '2rem',
+                customClass: {
+                    popup: 'rounded-[2rem]'
+                }
+            };
+
+            if (status === 'success' || status === 'added' || status === 'deleted') {
+                config.icon = 'success';
+                config.title = 'ប្រតិបត្តិការជោគជ័យ!';
+                config.text = (status === 'deleted') ? 'ទិន្នន័យត្រូវបានលុបចេញពីប្រព័ន្ធ' : 'ទិន្នន័យត្រូវបានរក្សាទុកដោយជោគជ័យ';
+            } else if (status === 'error') {
+                config.icon = 'error';
+                config.title = 'មានបញ្ហា!';
+                config.text = urlParams.get('msg') || 'មិនអាចអនុវត្តប្រតិបត្តិការបានទេ';
+                config.showConfirmButton = true;
+                config.timer = null; // បើ error ទុកឱ្យ user ចុចបិទខ្លួនឯង
+            }
+
+            Swal.fire(config);
+
+            // សម្អាត URL បន្ទាប់ពីបង្ហាញ Alert រួច ដើម្បីកុំឱ្យ Refresh ទៅវាលោតមកទៀត
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    });
 </script>

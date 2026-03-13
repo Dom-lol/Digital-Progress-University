@@ -15,8 +15,8 @@ if ($id > 0) {
     }
     
     if (mysqli_query($conn, $sql)) {
-        header("Location: ../CheckRoom/actons/building_room.php?status=deleted");
+        header("Location: ../views/checkroom/buildings.php?status=deleted");
     } else {
-        header("Location: ../CheckRoom/actons/building_room.php?status=error");
+        header("Location: ../views/checkroom/buildings.php?status=error");
     }
 }
