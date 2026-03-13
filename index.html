@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/output.css">
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>សាកលវិទ្យាល័យ វឌ្ឍនភាពឌីជីថល</title>
+</head>
+<style>
+/* Swiper Style */
+    swiper-container {
+      width: 100%;
+      height: 500px;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white; /* Added for visibility */
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .autoplay-progress {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--swiper-theme-color);
+    }
+
+    .autoplay-progress svg {
+      --progress: 0;
+      position: absolute;
+      left: 0;
+      top: 0px;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      stroke-width: 4px;
+      stroke: var(--swiper-theme-color);
+      fill: none;
+      stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+      stroke-dasharray: 125.6;
+      transform: rotate(-90deg);
+    }
+
+   .animate-marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee 15s linear infinite;
+    }
+
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    
+    /* បញ្ឈប់អក្សររត់ពេលដាក់ Mouse លើ (Optional) */
+    .animate-marquee:hover {
+        animation-play-state: paused;
+    }
+</style>
+<body class="m-0 p-0 overflow-x-hidden">
+<header id="home" class="w-full h-[40px] bg-[#f4f4f4] border-b border-gray-200">
+    <div class="container mx-auto px-6 h-full flex justify-between items-center text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+        
+       <div class="flex items-center gap-6">
+    <div class="flex items-center gap-2 group cursor-pointer">
+        <span class="text-[#1e5f8a] text-[14px]">📧</span>
+        <a href="mailto:info@dpu.edu.kh" class="hover:text-[#1e5f8a] transition-colors lowercase">info@dpu.edu.kh</a>
+    </div>
+
+    <div class="hidden sm:flex items-center gap-2 border-l border-gray-300 pl-6 font-medium">
+        <span class="text-[#1e5f8a] text-[14px]">📞</span>
+        <span>+855 12 345 678</span>
+    </div>
+
+    <div class="hidden lg:flex items-center gap-3 border-l border-gray-300 pl-6 text-[18px]">
+            <a href="#" class="text-[#0088cc] transition-all transform hover:scale-120 active:scale-90" title="Telegram">
+                <i class="fa-brands fa-telegram"></i>
+            </a>
+            <a href="#" class="text-[#1877f2] transition-all transform hover:scale-120 active:scale-90" title="Facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="#" class="text-[#e4405f] transition-all transform hover:scale-120 active:scale-90" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" class="text-[#000000]  transition-all transform hover:scale-120 active:scale-90" title="X">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+        </div>
+    </div>
+
+        <div class="flex items-center gap-5 h-full">
+            <div class="flex items-center gap-4 border-r border-gray-300 pr-5">
+                <a href="#" class="flex items-center gap-1.5 group">
+                    <img src="https://flagcdn.com/w20/us.png" class="w-4 h-3 object-cover rounded-sm shadow-sm" alt="English">
+                    <span class="group-hover:text-[#1e5f8a] transition-colors">EN</span>
+                </a>
+                
+                <a href="#" class="flex items-center gap-1.5 group">
+                    <img src="https://flagcdn.com/w20/kh.png" class="w-4 h-3 object-cover rounded-sm shadow-sm" alt="Khmer">
+                    <span class="group-hover:text-[#1e5f8a] transition-colors">KH</span>
+                </a>
+            </div>
+
+            <a href="login.php" class="flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-gray-200 hover:border-[#0a3d62] hover:text-[#0a3d62] transition-all shadow-sm group">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 text-[#1e5f8a] group-hover:scale-110 transition-transform">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+                <span class="tracking-tighter uppercase">Portal Login</span>
+            </a>
+        </div>
+
+    </div>
+</header>
+<section class="bg-[#0a3d62] min-h-[200px] w-full relative overflow-hidden">
+    
+    <div class="container mx-auto px-6 flex items-center gap-4">
+        <a href="#home" class="shrink-0">
+            <img class="w-[100px] md:w-[150px] transition-transform hover:scale-105" 
+                 src="./assets/img/favicon.ico" 
+                 alt="DPU Logo">
+        </a>
+        
+        <div class="text-white">
+            <h1 class="text-[20px] md:text-[24px] font-bold leading-tight">
+                សាកលវិទ្យាល័យ វឌ្ឍនភាពឌីជីថល
+            </h1>
+            <p class="text-[16px] md:text-[18px] opacity-90 uppercase tracking-wide">
+                Digital Progress University
+            </p>
+        </div>
+    </div>
+
+    <div class="absolute  bottom-0 w-[350px] h-[30px]">
+        <div class=" bg-white backdrop-blur-sm py-2 px-4  shadow-2xl border border-white/20 overflow-hidden">
+            <div class="flex whitespace-nowrap animate-marquee">
+                <span class="text-[#0a3d62] font-bold text-sm mx-4">
+                    📢 ស្វាគមន៍មកកាន់សាកលវិទ្យាល័យ វឌ្ឍនភាពឌីជីថល! ការចុះឈ្មោះចូលរៀនសម្រាប់ឆ្នាំសិក្សាថ្មីចាប់ផ្ដើមហើយ។
+                </span>
+                <span class="text-[#0a3d62] font-bold text-sm mx-4">
+                    📢 ស្វាគមន៍មកកាន់សាកលវិទ្យាល័យ វឌ្ឍនភាពឌីជីថល! ការចុះឈ្មោះចូលរៀនសម្រាប់ឆ្នាំសិក្សាថ្មីចាប់ផ្ដើមហើយ។
+                </span>
+            </div>
+        </div>
+    </div>
+
+</section>
+    <nav class="bg-[#1e5f8a] sticky top-0 z-50 w-full shadow-lg text-white">
+    <div class="max-w-[1440px] mx-auto h-[60px] flex items-center px-6 md:px-[100px]">
+        
+       <ul class="flex gap-4 md:gap-8 text-[15px] md:text-[18px] font-medium h-full items-center uppercase text-white">
+    <li class="h-full flex items-center">
+        <a href="index.html" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+            Home
+            <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+    </li>
+
+    <li class="h-full flex items-center">
+        <a href="index.html#About" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+            About
+            <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+    </li>
+
+    <li class="h-full flex items-center">
+        <a href="index.html#Faculties" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+            Faculties
+            <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+    </li>
+
+    <li class="h-full flex items-center">
+        <a href="index.html#Admission" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+            Admission
+            <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+    </li>
+
+    <li class="h-full flex items-center">
+        <a href="index.html#News" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+            News
+            <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+    </li>
+
+    <li class="h-full flex items-center">
+        <a href="index.html#Contact" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+            Contact
+            <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+    </li>
+</ul>
+    </div>
+    </nav>
+ 
+<section class="w-full">
+    <swiper-container class="mySwiper w-full h-[500px] lg:h-[650px]" 
+        space-between="0" 
+        loop="true"
+        pagination="true"
+        autoplay-delay="4000" 
+        autoplay-disable-on-interaction="false">
+        
+        <swiper-slide class="relative overflow-hidden">
+            <img src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="w-full h-full object-cover" alt="DPU Study Environment">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#ffffff]/80 via-[#ffffff]/40 to-transparent flex items-center px-12 lg:px-24">
+                <div class="max-w-2xl text-white space-y-5">
+                    <h2 class="text-5xl lg:text-7xl font-black leading-tight uppercase tracking-tighter">
+                        Welcome to <br><span class="text-yellow-400">Digital Progress</span>
+                    </h2>
+                    <p class="text-xl lg:text-2xl opacity-90 font-medium leading-relaxed max-w-xl">
+                        កសាងអនាគតរបស់អ្នកជាមួយការអប់រំបែបឌីជីថលឈានមុខគេនៅកម្ពុជា។
+                    </p>
+                </div>
+            </div>
+        </swiper-slide>
+
+        <swiper-slide class="relative overflow-hidden">
+            <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="w-full h-full object-cover" alt="Modern Tech Lab">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#ffffff]/80 via-[#ffffff]/40 to-transparent flex items-center px-12 lg:px-24">
+                <div class="max-w-2xl text-white space-y-5">
+                    <h2 class="text-5xl lg:text-7xl font-black leading-tight uppercase tracking-tighter">
+                        Modern <br><span class="text-yellow-400">Tech Lab</span>
+                    </h2>
+                    <p class="text-xl lg:text-2xl opacity-90 font-medium leading-relaxed max-w-xl">
+                        បំពាក់ដោយឧបករណ៍ទំនើបៗ ដើម្បីគាំទ្រដល់ការអនុវត្តផ្ទាល់របស់និស្សិត។
+                    </p>
+                </div>
+            </div>
+        </swiper-slide>
+
+        <swiper-slide class="relative overflow-hidden">
+            <img src="https://images.pexels.com/photos/7973211/pexels-photo-7973211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="w-full h-full object-cover" alt="Global Students">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#ffffff]/80 via-[#ffffff]/40 to-transparent flex items-center px-12 lg:px-24">
+                <div class="max-w-2xl text-white space-y-5">
+                    <h2 class="text-5xl lg:text-7xl font-black leading-tight uppercase tracking-tighter">
+                        Global <br><span class="text-yellow-400">Opportunity</span>
+                    </h2>
+                    <p class="text-xl lg:text-2xl opacity-90 font-medium leading-relaxed max-w-xl">
+                        ពង្រីកចំណេះដឹង និងបង្កើតទំនាក់ទំនងជាមួយបណ្តាញនិស្សិតទូទាំងសកលលោក។
+                    </p>
+                </div>
+            </div>
+        </swiper-slide>
+
+        <div class="autoplay-progress absolute right-8 bottom-8 z-20 w-12 h-12 flex items-center justify-center text-white font-bold text-[10px]" slot="container-end">
+            <svg viewBox="0 0 48 48" class="absolute inset-0 w-full h-full rotate-[-90deg]">
+                <circle cx="24" cy="24" r="20" stroke="rgba(255,255,255,0.2)" stroke-width="4" fill="none"></circle>
+                <circle class="progress-circle" cx="24" cy="24" r="20" stroke="#facc15" stroke-width="4" fill="none" stroke-dasharray="125.6" stroke-dashoffset="125.6"></circle>
+            </svg>
+            <span class="relative"></span>
+        </div>
+    </swiper-container>
+</section>
+
+    <section id="Faculties" class="py-16 bg-[#f9fafb] scroll-mt-[60px]">
+        <div class="container mx-auto px-6">
+            
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#000] mb-4 uppercase tracking-tight">Our Faculties</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+                    Choose a program that aligns with your passion and start building a successful career in the digital era.
+                </p>
+                <div class="w-24 h-1.5 bg-[#1e5f8a] mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600" alt="IT Faculty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <a href="pages/faculty-detail.html?id=it" class="absolute inset-0 bg-[#0a3d62]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white font-bold border-2 border-white px-4 py-2 uppercase text-sm tracking-wider">View Programs</span>
+                        </a>
+                    </div>
+                    <div class="p-6 flex-grow text-center">
+                        <div class="w-12 h-12 bg-[#1e5f8a]/10 rounded-lg flex items-center justify-center mx-auto mb-4 text-[#1e5f8a] font-bold text-xl">IT</div>
+                        <h3 class="text-xl font-bold text-black mb-2 leading-tight">Information Technology</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Software Engineering, Cybersecurity, AI, and Data Science.</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 border-t border-gray-100 text-center">
+                        <a href="pages/faculty-detail.html?id=it" class="text-[#1e5f8a] font-semibold text-sm hover:underline">Learn More —&gt;</a>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600" alt="Business Faculty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <a href="pages/faculty-detail.html?id=ba" class="absolute inset-0 bg-[#0a3d62]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white font-bold border-2 border-white px-4 py-2 uppercase text-sm tracking-wider">View Programs</span>
+                        </a>
+                    </div>
+                    <div class="p-6 flex-grow text-center">
+                        <div class="w-12 h-12 bg-[#1e5f8a]/10 rounded-lg flex items-center justify-center mx-auto mb-4 text-[#1e5f8a] font-bold text-xl">BA</div>
+                        <h3 class="text-xl font-bold text-black mb-2 leading-tight">Digital Business</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Digital Marketing, E-Commerce, Fintech, and Management.</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 border-t border-gray-100 text-center">
+                        <a href="pages/faculty-detail.html?id=ba" class="text-[#1e5f8a] font-semibold text-sm hover:underline">Learn More —&gt;</a>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=600" alt="Engineering Faculty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <a href="pages/faculty-detail.html?id=en" class="absolute inset-0 bg-[#0a3d62]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white font-bold border-2 border-white px-4 py-2 uppercase text-sm tracking-wider">View Programs</span>
+                        </a>
+                    </div>
+                    <div class="p-6 flex-grow text-center">
+                        <div class="w-12 h-12 bg-[#1e5f8a]/10 rounded-lg flex items-center justify-center mx-auto mb-4 text-[#1e5f8a] font-bold text-xl">EN</div>
+                        <h3 class="text-xl font-bold text-black mb-2 leading-tight">Faculty of Engineering</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Network Infrastructure, Robotics, and Digital Electronics.</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 border-t border-gray-100 text-center">
+                        <a href="pages/faculty-detail.html?id=en" class="text-[#1e5f8a] font-semibold text-sm hover:underline">Learn More —&gt;</a>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600" alt="Arts Faculty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <a href="pages/faculty-detail.html?id=md" class="absolute inset-0 bg-[#0a3d62]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white font-bold border-2 border-white px-4 py-2 uppercase text-sm tracking-wider">View Programs</span>
+                        </a>
+                    </div>
+                    <div class="p-6 flex-grow text-center">
+                        <div class="w-12 h-12 bg-[#1e5f8a]/10 rounded-lg flex items-center justify-center mx-auto mb-4 text-[#1e5f8a] font-bold text-xl">MD</div>
+                        <h3 class="text-xl font-bold text-black mb-2 leading-tight">Digital Media & Design</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">UI/UX Design, Multimedia, and Digital Communication.</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 border-t border-gray-100 text-center">
+                        <a href="pages/faculty-detail.html?id=md" class="text-[#1e5f8a] font-semibold text-sm hover:underline">Learn More —&gt;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="stats-section" class="py-16 bg-[#1e5f8a] text-white">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <h3 class="text-1xl lg:text-2xl font-black mb-2">
+                    <span class="counter" data-target="1500">0</span>+
+                </h3>
+                <p class="text-blue-100 opacity-70 font-medium tracking-wide">Students</p>
+            </div>
+            <div>
+                <h3 class="text-1xl lg:text-2xl font-black mb-2">
+                    <span class="counter" data-target="50">0</span>+
+                </h3>
+                <p class="text-blue-100 opacity-70 font-medium tracking-wide">Tech Partners</p>
+            </div>
+            <div>
+                <h3 class="text-1xl lg:text-2xl font-black mb-2">
+                    <span class="counter" data-target="100">0</span>%
+                </h3>
+                <p class="text-blue-100 opacity-70 font-medium tracking-wide">Digital Campus</p>
+            </div>
+            <div>
+                <h3 class="text-1xl lg:text-2xl font-black mb-2">
+                    <span class="counter" data-target="95">0</span>%
+                </h3>
+                <p class="text-blue-100 opacity-70 font-medium tracking-wide">Employment Rate</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- News Secton -->
+    <section id="News" class="py-16 bg-white scroll-mt-[60px]">
+        <div class="container mx-auto px-6">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-black uppercase tracking-tight">News & Events</h2>
+                    <div class="w-20 h-1.5 bg-[#1e5f8a] mt-4 rounded-full"></div>
+                </div>
+                <a href="/pages/all-news.html" class="group text-[#1e5f8a] font-bold flex items-center gap-2">
+                    View All News 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <a href="/pages/news-detail.html" class="group block cursor-pointer">
+                    <div class="relative h-64 overflow-hidden rounded-2xl mb-4 shadow-sm group-hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600" alt="Workshop" 
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-[#1e5f8a] text-white px-3 py-1 rounded-lg text-sm font-semibold">
+                            12 Mar 2026
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-black group-hover:text-[#1e5f8a] transition-colors duration-300 mb-2 leading-tight">
+                        សិក្ខាសាលាស្តីពី AI និងអនាគតនៃបច្ចេកវិទ្យាឌីជីថល
+                    </h3>
+                    <p class="text-gray-500 text-sm line-clamp-2 leading-relaxed">
+                        ចូលរួមស្វែងយល់ពីការវិវត្តចុងក្រោយនៃបញ្ញាសិប្បនិម្មិត (AI) ជាមួយវាគ្មិនល្បីៗមកពីក្រុមហ៊ុនបច្ចេកវិទ្យាឈានមុខគេ...
+                    </p>
+                    <span class="inline-block mt-3 text-sm font-bold text-[#1e5f8a] opacity-0 group-hover:opacity-100 transition-opacity">
+                        Read More &rarr;
+                    </span>
+                </a>
+
+                <div class="group cursor-pointer">
+                    <div class="relative h-64 overflow-hidden rounded-2xl mb-4">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=600" alt="Scholarship" 
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-[#1e5f8a] text-white px-3 py-1 rounded-lg text-sm font-semibold">
+                            08 Mar 2026
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-black group-hover:text-[#1e5f8a] transition-colors duration-300 mb-2 leading-tight">
+                        អាហារូបករណ៍ ១០០% សម្រាប់និស្សិតឆ្នើមផ្នែក Software Engineering
+                    </h3>
+                    <p class="text-gray-500 text-sm line-clamp-2 leading-relaxed">
+                        សាកលវិទ្យាល័យប្រកាសផ្តល់អាហារូបករណ៍ពិសេសសម្រាប់ឆ្នាំសិក្សាថ្មី លើជំនាញវិស្វកម្មកម្មវិធីកុំព្យូទ័រ...
+                    </p>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="relative h-64 overflow-hidden rounded-2xl mb-4">
+                        <img src="https://images.unsplash.com/photo-1540575861501-7ad0582373f3?q=80&w=600" alt="Event" 
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-[#1e5f8a] text-white px-3 py-1 rounded-lg text-sm font-semibold">
+                            01 Mar 2026
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-black group-hover:text-[#1e5f8a] transition-colors duration-300 mb-2 leading-tight">
+                        ទិវាបច្ចេកវិទ្យាប្រចាំឆ្នាំ (Digital Tech Day 2026)
+                    </h3>
+                    <p class="text-gray-500 text-sm line-clamp-2 leading-relaxed">
+                        ការតាំងពិព័រណ៍ស្នាដៃនិស្សិត និងការប្រកួតប្រជែងសរសេរកូដដ៏ធំប្រចាំឆ្នាំនឹងឈានមកដល់នៅចុងខែនេះ...
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0a3d62] text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                
+                <div class="space-y-4">
+                    <img src="/assets/img/favicon.ico" alt="Logo" class="w-20 mb-4 brightness-0 invert">
+                    <h4 class="font-bold text-lg uppercase tracking-wider">Digital Progress University</h4>
+                    <p class="text-blue-100/70 text-sm leading-relaxed">
+                        ផ្ដល់នូវការអប់រំកម្រិតខ្ពស់លើវិស័យបច្ចេកវិទ្យាឌីជីថល ដើម្បីត្រៀមខ្លួនសម្រាប់អាជីពនាពេលអនាគត។
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-blue-100/80">
+                        <li><a href="index.html" class="hover:text-yellow-400 transition-colors">Home</a></li>
+                        <li><a href="index.html#Faculties" class="hover:text-yellow-400 transition-colors">Our Faculties</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Admissions</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">News & Events</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Faculties</h4>
+                    <ul class="space-y-3 text-sm text-blue-100/80">
+                        <li><a href="pages/faculty-detail.html?id=it" class="hover:text-yellow-400 transition-colors">Information Technology</a></li>
+                        <li><a href="pages/faculty-detail.html?id=ba" class="hover:text-yellow-400 transition-colors">Digital Business</a></li>
+                        <li><a href="pages/faculty-detail.html?id=en" class="hover:text-yellow-400 transition-colors">Engineering</a></li>
+                        <li><a href="pages/faculty-detail.html?id=md" class="hover:text-yellow-400 transition-colors">Media & Design</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Contact Us</h4>
+                    <div class="space-y-4 text-sm text-blue-100/80">
+                        <p class="flex items-start gap-3">
+                            <span class="text-yellow-400">📍</span>
+                            Phnom Penh, Cambodia
+                        </p>
+                        <p class="flex items-center gap-3">
+                            <span class="text-yellow-400">📞</span>
+                            +855 12 345 678
+                        </p>
+                        <p class="flex items-center gap-3">
+                            <span class="text-yellow-400">📧</span>
+                            info@dpu.edu.kh
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-blue-100/50">
+                <p>&copy; 2026 Digital Progress University. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors uppercase tracking-widest text-[10px]">Facebook</a>
+                    <a href="#" class="hover:text-white transition-colors uppercase tracking-widest text-[10px]">Telegram</a>
+                    <a href="#" class="hover:text-white transition-colors uppercase tracking-widest text-[10px]">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script>
+        const progressCircle = document.querySelector(".autoplay-progress svg");
+        const progressContent = document.querySelector(".autoplay-progress span");
+        const swiperEl = document.querySelector("swiper-container");
+
+        swiperEl.addEventListener("autoplaytimeleft", (e) => {
+            const [swiper, time, progress] = e.detail;
+            progressCircle.style.setProperty("--progress", 1 - progress);
+            progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+        });
+    </script>
+    <script>
+    const animateCounters = () => {
+        const counters = document.querySelectorAll('.counter');
+        const speed = 100; // ល្បឿនលោត (កាន់តែតូច កាន់តែលឿន)
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText.replace(/,/g, ''); // លុបសញ្ញាក្បៀសចេញសិនបើមាន
+                
+                // គណនាជំហាននៃការកើនឡើង
+                const increment = target / speed;
+
+                if (count < target) {
+                    const newValue = Math.ceil(count + increment);
+                    // បន្ថែមសញ្ញាក្បៀសវិញសម្រាប់លេខរាប់ពាន់ (ឧទាហរណ៍ 1,500)
+                    counter.innerText = newValue >= 1000 ? newValue.toLocaleString() : newValue;
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target >= 1000 ? target.toLocaleString() : target;
+                }
+            };
+            updateCount();
+        });
+    };
+
+    // ប្រើ Intersection Observer ដើម្បីឱ្យលេខលោតតែពេលយើង Scroll ទៅដល់
+    const observerOptions = {
+        threshold: 0.5 // ចាប់ផ្តើមដំណើរការពេលឃើញ Section ៥០%
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target); // ឱ្យដំណើរការតែម្តងគត់
+            }
+        });
+    }, observerOptions);
+
+    const statsSection = document.querySelector('#stats-section');
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+</script>
+</body>
+</html>

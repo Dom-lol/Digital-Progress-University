@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Activate Account | DPU</title>
+    <style>
+        body { font-family: 'Inter', 'Kantumruy Pro', sans-serif; }
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(10, 61, 98, 0.95) 0%, rgba(30, 95, 138, 0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1523050853063-bd8012fbb230?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="hero-bg min-h-screen flex items-center justify-center p-6">
+
+    <div class="w-full max-w-[500px] bg-white rounded-[2.5rem] shadow-2xl p-10 lg:p-14 border border-gray-100 relative">
+        
+        <div class="text-center mb-10">
+            <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+                <i class="fas fa-shield-alt text-3xl"></i>
+            </div>
+            <h3 class="text-3xl font-black text-slate-800 tracking-tight italic uppercase">Account Activation</h3>
+            <p class="text-gray-400 text-sm mt-2 font-medium">Please verify your student information to activate your portal access.</p>
+        </div>
+
+        <form action="auth/activate_process.php" method="POST" class="space-y-6">
+            <div class="space-y-2">
+                <label class="text-[11px] font-black text-slate-500 uppercase tracking-widest ml-1 block">Student ID</label>
+                <div class="relative group">
+                    <span class="absolute left-5 top-1/2 -translate-y-1/2 opacity-30 group-focus-within:opacity-100 group-focus-within:text-blue-600 transition-all">
+                        <i class="fas fa-id-card"></i>
+                    </span>
+                    <input type="text" name="student_id" placeholder="e.g. B20230123" required
+                        class="w-full pl-12 pr-6 py-4 bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white rounded-2xl outline-none transition-all font-medium">
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-[11px] font-black text-slate-500 uppercase tracking-widest ml-1 block">passwprd</label>
+                <div class="relative group">
+                    <span class="absolute left-5 top-1/2 -translate-y-1/2 opacity-30 group-focus-within:opacity-100 group-focus-within:text-blue-600 transition-all">
+                     password
+                    </span>
+                    <input type="password" name="password" required
+                        class="w-full pl-12 pr-6 py-4 bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white rounded-2xl outline-none transition-all font-medium">
+                </div>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-2xl font-black text-sm shadow-xl shadow-blue-500/30 flex items-center justify-center gap-3 transition-all transform active:scale-95">
+                Verify Identity <i class="fas fa-arrow-right text-[10px]"></i>
+            </button>
+        </form>
+
+        <div class="mt-10 pt-8 border-t border-gray-50 text-center">
+            <a href="/login.html" class="text-sm font-black text-gray-400 hover:text-blue-600 transition-all">
+                <i class="fas fa-chevron-left mr-2"></i> Back to Login
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

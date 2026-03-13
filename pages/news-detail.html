@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
+    <title>News Detail - DPU</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', 'Kantumruy Pro', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+   <header id="home" class="w-full h-[40px] bg-[#f4f4f4] border-b border-gray-200">
+    <div class="container mx-auto px-6 h-full flex justify-between items-center text-[12px] font-medium text-gray-600">
+        <div class="flex gap-6 uppercase tracking-wider">
+            <span class="flex items-center gap-2">
+                <span class="text-[#1e5f8a]">📧</span> info@dpu.edu.kh
+            </span>
+            <span class="hidden md:flex items-center gap-2">
+                <span class="text-[#1e5f8a]">📞</span> +855 12 345 678
+            </span>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="pages/login.html" class="flex items-center gap-1 hover:text-[#1e5f8a] transition-colors uppercase">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+                Portal Login
+            </a>
+        </div>
+    </div>
+</header>
+
+    <section class="bg-[#0a3d62] min-h-[200px] w-full flex items-center">
+        <div class="container mx-auto px-6 flex items-center ">
+            <a href="index.html" class="shrink-0">
+                <img class="w-[120px] md:w-[150px] transition-transform hover:scale-105" 
+                     src="/assets/img/favicon.ico" 
+                     alt="DPU Logo">
+            </a>
+            
+            <div class="text-white">
+                <h1 class="text-[20px] md:text-[24px] font-bold leading-tight">
+                    សាកលវិទ្យាល័យ វឌ្ឍនភាពឌីជីថល
+                </h1>
+                <p class="text-[16px] md:text-[18px] opacity-90 uppercase tracking-wide">
+                    Digital Progress University
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <nav class="bg-[#1e5f8a] sticky top-0 z-50 w-full shadow-lg text-white">
+        <div class="max-w-[1440px] mx-auto h-[60px] flex items-center px-6 md:px-[100px]">
+            <ul class="flex gap-4 md:gap-8 text-[15px] md:text-[18px] font-medium h-full items-center">
+                <li class="h-full flex items-center">
+                    <a href="index.html" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+                        Home
+                        <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </li>
+                <li class="h-full flex items-center">
+                    <a href="#" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+                        About
+                        <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </li>
+                <li class="h-full flex items-center">
+                    <a href="index.html#Faculties" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+                        Faculties
+                        <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </li>
+                <li class="h-full flex items-center">
+                    <a href="#" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+                        Admission
+                        <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </li>
+                <li class="h-full flex items-center">
+                    <a href="index.html#News" class="text-yellow-400 font-bold relative group">
+                        News
+                        <span class="absolute bottom-[-4px] left-0 w-full h-[2px] bg-yellow-400"></span>
+                    </a>
+                </li>
+                <li class="h-full flex items-center">
+                    <a href="#" class="hover:text-yellow-400 transition-colors duration-300 relative group">
+                        Contact
+                        <span class="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-12 max-w-[1100px]">
+        <div class="flex flex-col gap-8">
+            <div class="w-full h-[300px] md:h-[500px] rounded-3xl overflow-hidden shadow-md">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200" 
+                     class="w-full h-full object-cover" alt="News Image">
+            </div>
+
+            <div class="bg-white p-6 md:p-10 rounded-3xl shadow-sm border border-gray-100">
+                <div class="flex items-center gap-3 mb-6 text-[#1e5f8a] font-bold">
+                    <span class="bg-blue-50 px-3 py-1 rounded-full text-sm">Event</span>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-gray-500 text-sm font-medium">12 March 2026</span>
+                </div>
+
+                <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-8">
+                    សិក្ខាសាលាស្តីពី AI និងអនាគតនៃបច្ចេកវិទ្យាឌីជីថល
+                </h2>
+
+                <div class="text-gray-600 leading-[1.8] text-[16px] md:text-[18px] space-y-6">
+                    <p>
+                        សាកលវិទ្យាល័យ វឌ្ឍនភាពឌីជីថល បានរៀបចំសិក្ខាសាលាដ៏ធំមួយដែលផ្ដោតទៅលើការរីកចម្រើននៃបញ្ញាសិប្បនិម្មិត (Artificial Intelligence)។ នៅក្នុងកម្មវិធីនេះ មានការចូលរួមពីវាគ្មិនល្បីៗមកពីស្ថាប័នបច្ចេកវិទ្យាជាតិ និងអន្តរជាតិ។
+                    </p>
+                    <p>
+                        គោលបំណងនៃសិក្ខាសាលានេះ គឺដើម្បីពង្រីកចំណេះដឹងដល់និស្សិតផ្នែកវិទ្យាសាស្ត្រកុំព្យូទ័រ ឱ្យយល់កាន់តែច្បាស់អំពីការប្រើប្រាស់ AI ក្នុងការដោះស្រាយបញ្ហាក្នុងសង្គម និងការបង្កើតឱកាសការងារថ្មីៗ។
+                    </p>
+                    <div class="p-6 bg-gray-50 rounded-2xl border-l-4 border-[#1e5f8a]">
+                        <p class="italic">"ការយល់ដឹងពី AI មិនមែនគ្រាន់តែជាជម្រើសទៀតនោះទេ ប៉ុន្តែវាគឺជាតម្រូវការចាំបាច់សម្រាប់អ្នកអភិវឌ្ឍន៍ជំនាន់ក្រោយ។"</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-8 border-t">
+                    <a href="index.html#News" class="inline-flex items-center gap-2 text-[#1e5f8a] font-bold hover:gap-4 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                        Back to News
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   <footer class="bg-[#0a3d62] text-white pt-16 pb-8">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            
+            <div class="space-y-4">
+                <img src="/assets/img/favicon.ico" alt="Logo" class="w-20 mb-4 brightness-0 invert">
+                <h4 class="font-bold text-lg uppercase tracking-wider">Digital Progress University</h4>
+                <p class="text-blue-100/70 text-sm leading-relaxed">
+                    ផ្ដល់នូវការអប់រំកម្រិតខ្ពស់លើវិស័យបច្ចេកវិទ្យាឌីជីថល ដើម្បីត្រៀមខ្លួនសម្រាប់អាជីពនាពេលអនាគត។
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-blue-100/80">
+                    <li><a href="index.html" class="hover:text-yellow-400 transition-colors">Home</a></li>
+                    <li><a href="index.html#Faculties" class="hover:text-yellow-400 transition-colors">Our Faculties</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors">Admissions</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors">News & Events</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Faculties</h4>
+                <ul class="space-y-3 text-sm text-blue-100/80">
+                    <li><a href="pages/faculty-detail.html?id=it" class="hover:text-yellow-400 transition-colors">Information Technology</a></li>
+                    <li><a href="pages/faculty-detail.html?id=ba" class="hover:text-yellow-400 transition-colors">Digital Business</a></li>
+                    <li><a href="pages/faculty-detail.html?id=en" class="hover:text-yellow-400 transition-colors">Engineering</a></li>
+                    <li><a href="pages/faculty-detail.html?id=md" class="hover:text-yellow-400 transition-colors">Media & Design</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Contact Us</h4>
+                <div class="space-y-4 text-sm text-blue-100/80">
+                    <p class="flex items-start gap-3">
+                        <span class="text-yellow-400">📍</span>
+                        Phnom Penh, Cambodia
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <span class="text-yellow-400">📞</span>
+                        +855 12 345 678
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <span class="text-yellow-400">📧</span>
+                        info@dpu.edu.kh
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-blue-100/50">
+            <p>&copy; 2026 Digital Progress University. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition-colors uppercase tracking-widest text-[10px]">Facebook</a>
+                <a href="#" class="hover:text-white transition-colors uppercase tracking-widest text-[10px]">Telegram</a>
+                <a href="#" class="hover:text-white transition-colors uppercase tracking-widest text-[10px]">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
