@@ -24,47 +24,52 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#F8FAFC]">
+
     <header class="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-50">
         <div>
-            <h2 class="text-2xl font-[900] text-slate-800 tracking-tight uppercase italic leading-none">គ្រប់គ្រងអគារ និងបន្ទប់</h2>
-            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] mt-1">Building & Room Management</p>
+            <h2 class="text-2xl font-[900] text-slate-800 ">គ្រប់គ្រងអគារ និងបន្ទប់</h2>
+            <p class="text-[12px] text-slate-400 font-bold uppercase tracking-[0.1em]">Building & Room Management</p>
         </div>
 
         <div class="flex items-center gap-3">
             <button onclick="toggleModal('modalImport')" class="flex items-center gap-2 bg-emerald-50 text-emerald-600 px-5 py-3 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-emerald-600 hover:text-white transition-all border border-emerald-100 shadow-sm">
                 <i class="fas fa-file-import text-sm"></i> Import
             </button>
-            <button onclick="toggleModal('modalBuilding')" class="px-6 py-3 bg-blue-600 text-white rounded-xl font-black text-xs uppercase shadow-lg shadow-blue-500/20 hover:scale-105 transition-all">
-                <i class="fas fa-plus-circle mr-2"></i> បន្ថែមអគារ
+            <button onclick="toggleModal('modalBuilding')" class="px-6 py-3 bg-blue-600 text-white rounded-xl font-black text-xs uppercase shadow-lg shadow-blue-500/20 hover:bg-blue-800">
+                <i class="fas fa-plus-circle mr-2"></i> Add Building
             </button>
-            <button onclick="toggleModal('modalRoom')" class="px-6 py-3 bg-emerald-600 text-white rounded-xl font-black text-xs uppercase shadow-lg shadow-emerald-500/20 hover:scale-105 transition-all">
-                <i class="fas fa-door-open mr-2"></i> បន្ថែមបន្ទប់
+            <button onclick="toggleModal('modalRoom')" class="px-6 py-3 bg-emerald-600 text-white rounded-xl font-black text-xs uppercase shadow-lg shadow-emerald-500/20 hover:bg-emerald-800">
+                <i class="fas fa-door-open mr-2"></i> Add Room
             </button>
         </div>
     </header>
 
+    <!-- Smart feature -->
     <main class="flex-1 overflow-y-auto p-8 lg:p-10 custom-scrollbar">
         <div class="flex flex-wrap items-center gap-4 mb-10">
+            
+        <!-- Smart Search -->
             <div class="flex-1 min-w-[200px] relative">
                 <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                <input type="text" id="smartSearch" onkeyup="smartFilter()" placeholder="ស្វែងរកលេខបន្ទប់ ឬអគារ..." 
+                <input type="text" id="smartSearch" onkeyup="smartFilter()" placeholder="Search..." 
                        class="w-full pl-12 pr-6 py-4 bg-white border border-slate-200 rounded-[1.5rem] shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium outline-none">
             </div>
 
+            <!-- Smart Feature -->
             <div class="flex gap-2">
                 <select id="filterBuilding" onchange="updateFloorFilter()" class="px-4 py-4 bg-white border border-slate-200 rounded-2xl font-bold text-xs uppercase text-slate-600 outline-none focus:border-blue-500 shadow-sm cursor-pointer">
-                    <option value="">អគារទាំងអស់</option>
+                    <option value="">Building</option>
                     <?php foreach($buildings_data as $b): ?>
                         <option value="<?= $b['id'] ?>" data-total="<?= $b['totalfloor'] ?>"><?= $b['building_name'] ?></option>
                     <?php endforeach; ?>
                 </select>
 
                 <select id="filterFloor" onchange="updateRoomFilter()" class="px-4 py-4 bg-white border border-slate-200 rounded-2xl font-bold text-xs uppercase text-slate-600 outline-none focus:border-blue-500 shadow-sm cursor-pointer">
-                    <option value="">ជាន់ទាំងអស់</option>
+                    <option value="">Floor</option>
                 </select>
 
                 <select id="filterRoom" onchange="smartFilter()" class="px-4 py-4 bg-white border border-slate-200 rounded-2xl font-bold text-xs uppercase text-slate-600 outline-none focus:border-blue-500 shadow-sm cursor-pointer">
-                    <option value="">បន្ទប់ទាំងអស់</option>
+                    <option value="">Room</option>
                 </select>
                 
                 <button onclick="resetFilters()" class="px-4 py-4 bg-slate-100 text-slate-500 rounded-2xl hover:bg-rose-50 hover:text-rose-500 transition-all">
@@ -78,6 +83,7 @@
             </div>
         </div>
 
+        <!-- Grid Views -->
         <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <?php 
                 $b_query = "SELECT b.*, COUNT(r.id) as total_rooms FROM buildings b LEFT JOIN rooms r ON b.id = r.building_id GROUP BY b.id ORDER BY b.id DESC";
@@ -104,13 +110,14 @@
             <?php endwhile; ?>
         </div>
 
+        <!-- List Views -->
         <div id="listView" class="hidden bg-white rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden">
             <table class="w-full text-left border-collapse">
                 <thead class="bg-slate-50/50 border-b border-slate-100">
                     <tr>
-                        <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">អគារ</th>
-                        <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">ជាន់</th>
-                        <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">លេខបន្ទប់</th>
+                        <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Buildinng</th>
+                        <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Floor</th>
+                        <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Room</th>
                         <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Action</th>
                     </tr>
                 </thead>
@@ -127,7 +134,7 @@
                                 <?= $row['building_name']; ?>
                             </span>
                         </td>
-                        <td class="px-8 py-5 text-sm font-bold text-slate-500">ជាន់ទី <?= $row['floor_number']; ?></td>
+                        <td class="px-8 py-5 text-sm font-bold text-slate-500">Floor <?= $row['floor_number']; ?></td>
                         <td class="px-8 py-5 font-black text-slate-800 italic uppercase name-target"><?= $row['room_name']; ?></td>
                         <td class="px-8 py-5 text-right">
                              <button onclick="editRoom(<?= htmlspecialchars(json_encode($row)) ?>)" class="text-slate-400 hover:text-blue-600 mr-4"><i class="fas fa-edit"></i></button>
@@ -140,6 +147,8 @@
         </div>
     </main>
 </div>
+
+<!-- Modal Import Building -->
 <div id="modalImport" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
     <div class="bg-white w-full max-w-4xl rounded-[2.5rem] shadow-2xl p-8 max-h-[90vh] flex flex-col transform transition-all">
         <div class="flex justify-between items-center mb-6">
@@ -202,29 +211,32 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Add Building -->
 <div id="modalBuilding" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
     <div class="bg-white w-full max-w-md rounded-[2.5rem] shadow-2xl p-8">
         <div class="flex justify-between items-center mb-6">
-            <h3 class="text-xl font-black text-slate-800 uppercase italic">បន្ថែមអគារថ្មី</h3>
+            <h3 class="text-xl font-bold text-slate-800 capitalize ">Add Building</h3>
             <button onclick="toggleModal('modalBuilding')" class="text-slate-300 hover:text-rose-500"><i class="fas fa-times-circle text-2xl"></i></button>
         </div>
         <form action="../../actions/building_controller.php" method="POST" class="space-y-5">
             <input type="hidden" name="action" value="add">
             <div>
-                <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 ml-1">ឈ្មោះអគារ</label>
-                <input type="text" name="building_name" required placeholder="ឧទាហរណ៍៖ អគារ A" 
+                <label class="block text-[12px] font-bold capitalize text-slate-500 mb-2 ml-1">Building Name</label>
+                <input type="text" name="building_name" required placeholder="Building Name" 
                        class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:outline-none font-bold text-slate-700">
             </div>
             <div>
-                <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 ml-1">ចំនួនជាន់សរុប</label>
-                <input type="number" name="totalfloor" required placeholder="ឧទាហរណ៍៖ 5" 
+                <label class="block text-[12px] font-bold capitalize text-slate-500 mb-2 ml-1">total floor</label>
+                <input type="number" name="totalfloor" required placeholder="Total floor" 
                        class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:outline-none font-bold text-slate-700">
             </div>
-            <button type="submit" class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition-all">រក្សាទុកអគារ</button>
+            <button type="submit" class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black capitalize shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition-all">save</button>
         </form>
     </div>
 </div>
 
+<!-- Modal Edit Building -->
 <div id="modalEditBuilding" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
     <div class="bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl p-8 transform transition-all">
         <h3 class="text-xl font-black text-slate-800 uppercase italic mb-6">កែសម្រួលអគារ</h3>
@@ -254,10 +266,11 @@
     </div>
 </div>
 
+<!-- Modal Add Rooms -->
 <div id="modalRoom" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
     <div class="bg-white w-full max-w-md rounded-[2.5rem] shadow-2xl p-8 transform transition-all">
         <div class="flex justify-between items-center mb-6">
-            <h3 id="roomModalTitle" class="text-xl font-black text-slate-800 uppercase italic">បន្ថែមបន្ទប់ថ្មី</h3>
+            <h3 id="roomModalTitle" class="text-xl font-bold text-slate-800 capitalize">add buidling</h3>
             <button onclick="toggleModal('modalRoom')" class="text-slate-300 hover:text-rose-500"><i class="fas fa-times-circle text-2xl"></i></button>
         </div>
         <form action="../../actions/room_controller.php" method="POST" class="space-y-5">
@@ -265,10 +278,10 @@
             <input type="hidden" name="room_id" id="editRoomId">
             
             <div>
-                <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 ml-1">ជ្រើសរើសអគារ</label>
+                <label class="block text-[12px] font-bold capitalize text-slate-500 mb-2 ml-1">select building</label>
                 <select name="building_id" id="select_building" required onchange="updateFloorOptions()" 
                     class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:outline-none font-bold text-slate-700 appearance-none">
-                    <option value="">-- រើសអគារ --</option>
+                    <option value="">-- Building --</option>
                     <?php foreach($buildings_data as $b): ?>
                         <option value="<?= $b['id'] ?>" data-floors="<?= $b['totalfloor'] ?>"><?= $b['building_name'] ?></option>
                     <?php endforeach; ?>
@@ -277,21 +290,21 @@
 
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 ml-1">លេខបន្ទប់</label>
+                    <label class="block text-[12px] font-bold text-slate-500 mb-2 ml-1">RoomID</label>
                     <input type="text" name="room_name" id="modalRoomName" required placeholder="101" 
                         class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:outline-none font-bold text-slate-700">
                 </div>
                 <div>
-                    <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 ml-1">ជ្រើសរើសជាន់</label>
+                    <label class="block text-[12px] font-bold capitalize text-slate-500 mb-2 ml-1">select floor</label>
                     <select name="floor_number" id="select_floor" required 
                         class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:outline-none font-bold text-slate-700 appearance-none">
-                        <option value="">-- រើសជាន់ --</option>
+                        <option value="">-- Floor --</option>
                     </select>
                 </div>
             </div>
 
-            <button type="submit" class="w-full py-4 bg-emerald-600 text-white rounded-2xl font-black uppercase tracking-widest shadow-lg shadow-emerald-500/30 hover:bg-emerald-700 transition-all">
-                រក្សាទុកទិន្នន័យ
+            <button type="submit" class="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold capitalize shadow-lg shadow-emerald-500/30 hover:bg-emerald-700 transition-all">
+                save
             </button>
         </form>
     </div>
@@ -346,9 +359,9 @@
         const total = select.options[select.selectedIndex].getAttribute('data-total');
         const floorSelect = document.getElementById('filterFloor');
         
-        floorSelect.innerHTML = '<option value="">ជាន់ទាំងអស់</option>';
+        floorSelect.innerHTML = '<option value="">Floor</option>';
         if(total) {
-            for(let i=1; i<=total; i++) floorSelect.innerHTML += `<option value="${i}">ជាន់ទី ${i}</option>`;
+            for(let i=1; i<=total; i++) floorSelect.innerHTML += `<option value="${i}">Floor ${i}</option>`;
         }
         updateRoomFilter();
     }
@@ -358,7 +371,7 @@
         const f_num = document.getElementById('filterFloor').value;
         const roomSelect = document.getElementById('filterRoom');
         
-        roomSelect.innerHTML = '<option value="">បន្ទប់ទាំងអស់</option>';
+        roomSelect.innerHTML = '<option value="">Room</option>';
         allRooms.filter(r => (b_id==="" || r.building_id==b_id) && (f_num==="" || r.floor_number==f_num))
                 .forEach(r => roomSelect.innerHTML += `<option value="${r.room_name}">${r.room_name}</option>`);
         smartFilter();
@@ -470,8 +483,8 @@
     // ១០. Reset All Filters
     function resetFilters() {
         document.getElementById('filterBuilding').value = "";
-        document.getElementById('filterFloor').innerHTML = '<option value="">ជាន់ទាំងអស់</option>';
-        document.getElementById('filterRoom').innerHTML = '<option value="">បន្ទប់ទាំងអស់</option>';
+        document.getElementById('filterFloor').innerHTML = '<option value="">Floor</option>';
+        document.getElementById('filterRoom').innerHTML = '<option value="">Room</option>';
         document.getElementById('smartSearch').value = "";
         smartFilter();
     }
