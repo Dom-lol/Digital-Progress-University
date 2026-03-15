@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Schedule | DPU Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', 'Kantumruy Pro', sans-serif; background-color: #f8fafc; }
+        .sidebar-active { border-right: 4px solid #3b82f6; background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+    </style>
+</head>
+<body class="flex min-h-screen">
+
+    <aside class="w-60 bg-white border-r border-gray-200 hidden md:flex flex-col">
+        <!-- <div class="p-6">
+            <div class="flex items-center gap-3">
+                <img src="./assets/img/favicon.ico" class="w-10" alt="Logo">
+                <span class="font-bold text-xl text-slate-800">DPU Portal</span>
+            </div>
+        </div>
+        <nav class="flex-1 px-4 space-y-2">
+            <a href="#" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all">
+                <i class="fas fa-th-large w-5"></i> Dashboard
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-xl sidebar-active font-bold">
+                <i class="fas fa-calendar-alt w-5"></i> Class Schedule
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all">
+                <i class="fas fa-book w-5"></i> My Courses
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all">
+                <i class="fas fa-user-circle w-5"></i> Profile
+            </a>
+        </nav>
+        <div class="p-4 border-t border-gray-100">
+            <a href="login.php" class="flex items-center gap-3 p-3 text-red-500 font-semibold">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div> -->
+    </aside>
+
+    <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        
+       <header class="p-5">
+             <header class="bg-background flex h-16 shrink-0 items-center gap-2 rounded-xl border px-4 shadow-sm transition-all duration-700">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all hover:bg-slate-100 size-9 h-7 w-7 -ml-1" data-sidebar="trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-left"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M9 3v18"></path></svg>
+                    <span class="sr-only">Toggle Sidebar</span>
+                </button>
+
+                <div role="none" class="shrink-0 bg-slate-200 w-px mr-2 h-4"></div>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="flex items-center gap-1.5 break-words text-sm text-slate-500 sm:gap-2.5">
+                        <li class="inline-flex items-center gap-1.5">
+                            <a class="transition-colors hover:text-slate-900" href="/student">Home</a>
+                        </li>
+                        <li role="presentation" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg>
+                        </li>
+                        <li class="inline-flex items-center gap-1.5">
+                            <span role="link" aria-disabled="true" aria-current="page" class="font-normal text-slate-900">Schedule</span>
+                        </li>
+                    </ol>
+                </nav>
+
+                <div class="ml-auto flex items-center gap-2">
+                    <div class="flex items-center gap-1 rounded-full border border-yellow-500/30 bg-red-900/5 p-1 shadow-sm backdrop-blur-sm">
+                        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all size-9 h-7 w-7 hover:bg-white/40" title="Change Theme">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"></path><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
+                        </button>
+                        <div class="shrink-0 w-px h-4 bg-yellow-400/30"></div>
+                        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all size-9 h-7 w-7 hover:bg-white/40 animate-pulse" title="Pause Header Animation">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pause"><rect x="14" y="3" width="5" height="18" rx="1"></rect><rect x="5" y="3" width="5" height="18" rx="1"></rect></svg>
+                        </button>
+                        <div class="shrink-0 w-px h-4 bg-yellow-400/30"></div>
+                        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all size-9 h-7 w-7 hover:bg-white/40 transform duration-500 hover:rotate-12">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </button>
+                    </div>
+                    <div class="rounded-xl bg-green-600 px-2 py-1 text-[10px] font-bold text-white uppercase tracking-wider">Early Access</div>
+                </div>
+            </header>
+       </header>
+
+        <div class="flex-1 overflow-y-auto  md:px-5 space-y-8">
+            
+            <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 lg:text-3xl dark:text-gray-100">
+                        Class Schedule 2025-2026
+                    </h1>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                        View your weekly timetable and class information
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+                    <div class="flex items-center rounded-lg border border-gray-200 bg-white  dark:border-gray-700 dark:bg-gray-800">
+                        <button class="inline-flex items-center justify-center gap-2 rounded-md px-3 h-8 text-sm font-medium transition-all bg-gray-100 text-gray-900 shadow-sm dark:bg-gray-700 dark:text-gray-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list"><path d="M3 5h.01"></path><path d="M3 12h.01"></path><path d="M3 19h.01"></path><path d="M8 5h13"></path><path d="M8 12h13"></path><path d="M8 19h13"></path></svg>
+                            <span class="hidden sm:inline">Modern</span>
+                        </button>
+                        <button class="inline-flex items-center justify-center gap-2 rounded-md px-3 h-8 text-sm font-medium transition-all text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid"><rect width="7" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="14" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect></svg>
+                            <span class="hidden sm:inline">Classic</span>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button class="flex h-10 w-full sm:min-w-[200px] md:w-[220px] items-center justify-between rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100" type="button">
+                            <span>Year 3, Semester 2</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down opacity-50"><path d="m6 9 6 6 6-6"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rounded-lg border shadow-sm border-blue-100 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 dark:border-blue-900/50 dark:from-blue-950/20 dark:to-indigo-950/20">
+                <div class="p-4">
+                    <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                        
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+                            <div class="flex flex-wrap items-center gap-2 text-gray-600 dark:text-gray-400">
+                                <span class="font-medium text-gray-900 dark:text-gray-200">Department:</span>
+                                <span>COMPUTER STUDIES</span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-2 text-gray-600 dark:text-gray-400">
+                                <span class="font-medium text-gray-900 dark:text-gray-200">Major:</span>
+                                <span>Computer Science</span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-2 text-gray-600 dark:text-gray-400">
+                                <span class="font-medium text-gray-900 dark:text-gray-200">Shift:</span>
+                                <span>Evening</span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-2 text-gray-600 dark:text-gray-400">
+                                <span class="font-medium text-gray-900 dark:text-gray-200">Group:</span>
+                                <span>E2</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-start gap-4 border-t border-blue-200 pt-4 sm:flex-row sm:items-center lg:border-t-0 lg:border-l lg:pt-0 lg:pl-6 dark:border-blue-800">
+                            <div class="text-xs text-gray-600 dark:text-gray-400">
+                                <div class="font-medium text-gray-900 dark:text-gray-200">Academic Period</div>
+                                <div class="mt-0.5">Mar 16, 2026 - Jul 04, 2026</div>
+                            </div>
+                            
+                            <div class="flex flex-col gap-2 sm:flex-row">
+                                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all h-8 px-3 bg-white text-gray-900 border border-gray-200 shadow-sm hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 dark:hover:bg-gray-700">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>
+                                    <span class="hidden sm:inline">Export Schedule (.ics)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full max-w-full space-y-6">
+                <div id="day-Monday" class="scroll-mt-24">
+                    <div class="sticky top-20 z-10 mb-3 flex items-center justify-between rounded-lg border border-transparent px-3 py-2 backdrop-blur-md bg-white/80 text-gray-600 dark:bg-gray-800/80 dark:text-gray-300">
+                        <div class="flex items-center gap-2">
+                            <h2 class="text-sm font-bold tracking-wide uppercase">Monday</h2>
+                        </div>
+                        <div class="text-xs font-medium opacity-80">1 Subject</div>
+                    </div>
+                    
+                    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div class="group relative flex cursor-pointer items-stretch transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                            <div class="absolute top-0 bottom-0 left-0 w-1 bg-transparent transition-colors group-hover:bg-blue-500"></div>
+                            <div class="flex w-25 shrink-0 flex-col justify-center border-r border-gray-100 px-4 py-3 text-right dark:border-gray-800">
+                                <span class="text-sm font-bold text-gray-900 dark:text-gray-100">05:30 PM</span>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">08:30 PM</span>
+                            </div>
+                            <div class="flex min-w-0 flex-1 flex-col items-start justify-center px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+                                <div class="min-w-0 flex-1">
+                                    <div class="mb-1 flex items-center gap-2">
+                                        <div class="shrink-0 rounded bg-indigo-50 p-1 dark:bg-indigo-900/30 text-indigo-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H216V200H40Z"></path></svg>
+                                        </div>
+                                        <h3 class="truncate text-base font-semibold text-gray-900 dark:text-gray-100">Management Information System (MIS)</h3>
+                                    </div>
+                                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500 dark:text-gray-400">
+                                        <div class="flex items-center gap-1.5">
+                                            <i class="fas fa-map-marker-alt text-[10px]"></i>
+                                            <span>G-211, G-206b</span>
+                                        </div>
+                                        <div class="flex items-center gap-1.5">
+                                            <i class="fas fa-users text-[10px]"></i>
+                                            <span>2 Sessions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-2 flex shrink-0 items-center sm:mt-0 sm:pl-4">
+                                    <div class="relative h-8 w-8 overflow-hidden rounded-full border-2 border-white ring-1 ring-gray-100 dark:border-gray-900">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_JmafxKbli9Es5QUvL6d-qIdOd5RmExsvA&s" class="h-full w-full object-cover" alt="Lecturer">
+                                    </div>
+                                    <div class="ml-4 hidden sm:block text-gray-400 group-hover:text-blue-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="day-Tuesday" class="scroll-mt-24">
+                    <div class="sticky top-20 z-10 mb-3 flex items-center justify-between rounded-lg px-3 py-2 backdrop-blur-md bg-white/80 text-gray-600 dark:bg-gray-800/80">
+                        <h2 class="text-sm font-bold tracking-wide uppercase">Tuesday</h2>
+                        <div class="text-xs font-medium opacity-80">1 Subject</div>
+                    </div>
+                    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div class="group relative flex cursor-pointer items-stretch hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                            <div class="absolute top-0 bottom-0 left-0 w-1 bg-transparent group-hover:bg-blue-500"></div>
+                            <div class="flex w-25 shrink-0 flex-col justify-center border-r border-gray-100 px-4 py-3 text-right dark:border-gray-800">
+                                <span class="text-sm font-bold text-gray-900 dark:text-gray-100">05:30 PM</span>
+                                <span class="text-xs text-gray-500">08:30 PM</span>
+                            </div>
+                            <div class="flex min-w-0 flex-1 items-center justify-between px-4 py-3">
+                                <div class="min-w-0 flex-1">
+                                    <div class="mb-1 flex items-center gap-2">
+                                        <div class="shrink-0 rounded bg-orange-50 p-1 text-orange-600 dark:bg-orange-900/30">
+                                            <i class="fab fa-java"></i>
+                                        </div>
+                                        <h3 class="truncate text-base font-semibold text-gray-900 dark:text-gray-100">Advanced Java Programming</h3>
+                                    </div>
+                                    <div class="text-sm text-gray-500">G-110, G-205 • 2 Sessions</div>
+                                </div>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_JmafxKbli9Es5QUvL6d-qIdOd5RmExsvA&s" class="h-8 w-8 rounded-full object-cover border-2 border-white ring-1 ring-gray-100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="day-Wednesday" class="scroll-mt-24">
+                    <div class="sticky top-20 z-10 mb-3 flex items-center justify-between rounded-lg px-3 py-2 backdrop-blur-md bg-white/80 text-gray-600 dark:bg-gray-800/80">
+                        <h2 class="text-sm font-bold tracking-wide uppercase">Wednesday</h2>
+                        <div class="text-xs font-medium opacity-80">1 Subject</div>
+                    </div>
+                    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div class="group relative flex cursor-pointer items-stretch hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                            <div class="absolute top-0 bottom-0 left-0 w-1 bg-transparent group-hover:bg-blue-500"></div>
+                            <div class="flex w-25 shrink-0 flex-col justify-center border-r border-gray-100 px-4 py-3 text-right dark:border-gray-800">
+                                <span class="text-sm font-bold text-gray-900 dark:text-gray-100">05:30 PM</span>
+                                <span class="text-xs text-gray-500">08:30 PM</span>
+                            </div>
+                            <div class="flex min-w-0 flex-1 items-center justify-between px-4 py-3">
+                                <div class="min-w-0 flex-1">
+                                    <div class="mb-1 flex items-center gap-2">
+                                        <div class="shrink-0 rounded bg-orange-50 p-1 text-orange-600 dark:bg-orange-900/30">
+                                            <i class="fab fa-java"></i>
+                                        </div>
+                                        <h3 class="truncate text-base font-semibold text-gray-900 dark:text-gray-100">Advanced Java Programming</h3>
+                                    </div>
+                                    <div class="text-sm text-gray-500">G-110, G-205 • 2 Sessions</div>
+                                </div>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_JmafxKbli9Es5QUvL6d-qIdOd5RmExsvA&s" class="h-8 w-8 rounded-full object-cover border-2 border-white ring-1 ring-gray-100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="day-Thusday" class="scroll-mt-24">
+                    <div class="sticky top-20 z-10 mb-3 flex items-center justify-between rounded-lg px-3 py-2 backdrop-blur-md bg-white/80 text-gray-600 dark:bg-gray-800/80">
+                        <h2 class="text-sm font-bold tracking-wide uppercase">Thusday</h2>
+                        <div class="text-xs font-medium opacity-80">1 Subject</div>
+                    </div>
+                    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div class="group relative flex cursor-pointer items-stretch hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                            <div class="absolute top-0 bottom-0 left-0 w-1 bg-transparent group-hover:bg-blue-500"></div>
+                            <div class="flex w-25 shrink-0 flex-col justify-center border-r border-gray-100 px-4 py-3 text-right dark:border-gray-800">
+                                <span class="text-sm font-bold text-gray-900 dark:text-gray-100">05:30 PM</span>
+                                <span class="text-xs text-gray-500">08:30 PM</span>
+                            </div>
+                            <div class="flex min-w-0 flex-1 items-center justify-between px-4 py-3">
+                                <div class="min-w-0 flex-1">
+                                    <div class="mb-1 flex items-center gap-2">
+                                        <div class="shrink-0 rounded bg-orange-50 p-1 text-orange-600 dark:bg-orange-900/30">
+                                            <i class="fab fa-java"></i>
+                                        </div>
+                                        <h3 class="truncate text-base font-semibold text-gray-900 dark:text-gray-100">Advanced Java Programming</h3>
+                                    </div>
+                                    <div class="text-sm text-gray-500">G-110, G-205 • 2 Sessions</div>
+                                </div>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_JmafxKbli9Es5QUvL6d-qIdOd5RmExsvA&s" class="h-8 w-8 rounded-full object-cover border-2 border-white ring-1 ring-gray-100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="day-Friday" class="scroll-mt-24">
+                    <div class="sticky top-20 z-10 mb-3 flex items-center justify-between rounded-lg px-3 py-2 backdrop-blur-md bg-white/80 text-gray-600 dark:bg-gray-800/80">
+                        <h2 class="text-sm font-bold tracking-wide uppercase">Friday</h2>
+                        <div class="text-xs font-medium opacity-80">1 Subject</div>
+                    </div>
+                    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div class="group relative flex cursor-pointer items-stretch hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                            <div class="absolute top-0 bottom-0 left-0 w-1 bg-transparent group-hover:bg-blue-500"></div>
+                            <div class="flex w-25 shrink-0 flex-col justify-center border-r border-gray-100 px-4 py-3 text-right dark:border-gray-800">
+                                <span class="text-sm font-bold text-gray-900 dark:text-gray-100">05:30 PM</span>
+                                <span class="text-xs text-gray-500">08:30 PM</span>
+                            </div>
+                            <div class="flex min-w-0 flex-1 items-center justify-between px-4 py-3">
+                                <div class="min-w-0 flex-1">
+                                    <div class="mb-1 flex items-center gap-2">
+                                        <div class="shrink-0 rounded bg-orange-50 p-1 text-orange-600 dark:bg-orange-900/30">
+                                            <i class="fab fa-java"></i>
+                                        </div>
+                                        <h3 class="truncate text-base font-semibold text-gray-900 dark:text-gray-100">Advanced Java Programming</h3>
+                                    </div>
+                                    <div class="text-sm text-gray-500">G-110, G-205 • 2 Sessions</div>
+                                </div>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_JmafxKbli9Es5QUvL6d-qIdOd5RmExsvA&s" class="h-8 w-8 rounded-full object-cover border-2 border-white ring-1 ring-gray-100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="day-Saturday" class="scroll-mt-24">
+                    <div class="sticky top-20 z-10 mb-3 flex items-center justify-between rounded-lg px-3 py-2 backdrop-blur-md bg-white/80 text-gray-600 dark:bg-gray-800/80">
+                        <h2 class="text-sm font-bold tracking-wide uppercase">Saturday</h2>
+                        <div class="text-xs font-medium opacity-80">1 Subject</div>
+                    </div>
+                    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div class="group relative flex cursor-pointer items-stretch hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                            <div class="absolute top-0 bottom-0 left-0 w-1 bg-transparent group-hover:bg-blue-500"></div>
+                            <div class="flex w-25 shrink-0 flex-col justify-center border-r border-gray-100 px-4 py-3 text-right dark:border-gray-800">
+                                <span class="text-sm font-bold text-gray-900 dark:text-gray-100">05:30 PM</span>
+                                <span class="text-xs text-gray-500">08:30 PM</span>
+                            </div>
+                            <div class="flex min-w-0 flex-1 items-center justify-between px-4 py-3">
+                                <div class="min-w-0 flex-1">
+                                    <div class="mb-1 flex items-center gap-2">
+                                        <div class="shrink-0 rounded bg-orange-50 p-1 text-orange-600 dark:bg-orange-900/30">
+                                            <i class="fab fa-java"></i>
+                                        </div>
+                                        <h3 class="truncate text-base font-semibold text-gray-900 dark:text-gray-100">Advanced Java Programming</h3>
+                                    </div>
+                                    <div class="text-sm text-gray-500">G-110, G-205 • 2 Sessions</div>
+                                </div>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_JmafxKbli9Es5QUvL6d-qIdOd5RmExsvA&s" class="h-8 w-8 rounded-full object-cover border-2 border-white ring-1 ring-gray-100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="day-Tuesday" class="scroll-mt-24">
+                    <div class="sticky top-20 z-10 mb-3 flex items-center justify-between rounded-lg px-3 py-2 backdrop-blur-md bg-white/80 text-gray-600 dark:bg-gray-800/80">
+                        <h2 class="text-sm font-bold tracking-wide uppercase">Tuesday</h2>
+                        <div class="text-xs font-medium opacity-80">1 Subject</div>
+                    </div>
+                    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div class="group relative flex cursor-pointer items-stretch hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                            <div class="absolute top-0 bottom-0 left-0 w-1 bg-transparent group-hover:bg-blue-500"></div>
+                            <div class="flex w-25 shrink-0 flex-col justify-center border-r border-gray-100 px-4 py-3 text-right dark:border-gray-800">
+                                <span class="text-sm font-bold text-gray-900 dark:text-gray-100">05:30 PM</span>
+                                <span class="text-xs text-gray-500">08:30 PM</span>
+                            </div>
+                            <div class="flex min-w-0 flex-1 items-center justify-between px-4 py-3">
+                                <div class="min-w-0 flex-1">
+                                    <div class="mb-1 flex items-center gap-2">
+                                        <div class="shrink-0 rounded bg-orange-50 p-1 text-orange-600 dark:bg-orange-900/30">
+                                            <i class="fab fa-java"></i>
+                                        </div>
+                                        <h3 class="truncate text-base font-semibold text-gray-900 dark:text-gray-100">Advanced Java Programming</h3>
+                                    </div>
+                                    <div class="text-sm text-gray-500">G-110, G-205 • 2 Sessions</div>
+                                </div>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_JmafxKbli9Es5QUvL6d-qIdOd5RmExsvA&s" class="h-8 w-8 rounded-full object-cover border-2 border-white ring-1 ring-gray-100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+                </div>
+        </main>
+
+</body>
+</html>
